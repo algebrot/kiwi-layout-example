@@ -33,6 +33,8 @@ solver.addEditVariable(bWidth, kiwi.Strength.strong);
 
 // Create a variable calculated through a constraint
 
+// TODO: figure out why commented out constraints are unsolveable 
+
 // 10 ≤ a.left - p.left 
 var aLMinusPLGE = new kiwi.Expression([-1, pLeft], aLeft, -10);
 solver.addConstraint(new kiwi.Constraint(aLMinusPLGE, kiwi.Operator.Eq, kiwi.Strength.required));
@@ -43,7 +45,7 @@ var aLMinusPLLE = new kiwi.Expression([-1, aLeft], pLeft, 10);
 
 // 10 ≤ b.left - a.right
 var bLMinusARGE = new kiwi.Expression(bLeft, [-1, aRight], -10);
-// solver.addConstraint(new kiwi.Constraint(bLMinusARGE, kiwi.Operator.Eq, kiwi.Strength.required));
+solver.addConstraint(new kiwi.Constraint(bLMinusARGE, kiwi.Operator.Eq, kiwi.Strength.required));
 
 // b.left - a.right ≤ 10
 var bLMinusARLE = new kiwi.Expression(aRight, [-1, bLeft], 10);
@@ -51,7 +53,7 @@ var bLMinusARLE = new kiwi.Expression(aRight, [-1, bLeft], 10);
 
 // 10 ≤ p.right - b.right
 var pRMinusBRGE = new kiwi.Expression(pRight, [-1, bRight], -10);
-// solver.addConstraint(new kiwi.Constraint(pRMinusBRGE, kiwi.Operator.Eq, kiwi.Strength.required));
+solver.addConstraint(new kiwi.Constraint(pRMinusBRGE, kiwi.Operator.Eq, kiwi.Strength.required));
 
 // p.right - b.right ≤ 10
 var pRMinusBRLE = new kiwi.Expression(bRight, [-1, pRight], 10);
@@ -59,7 +61,7 @@ var pRMinusBRLE = new kiwi.Expression(bRight, [-1, pRight], 10);
 
 // 20 ≤ a.width 
 var aWidthGE = new kiwi.Expression(aWidth, -20);
-// solver.addConstraint(new kiwi.Constraint(aWidthGE, kiwi.Operator.Eq, kiwi.Strength.required));
+solver.addConstraint(new kiwi.Constraint(aWidthGE, kiwi.Operator.Eq, kiwi.Strength.required));
 
 // a.width ≤ 20
 var aWidthLE = new kiwi.Expression([-1, aWidth], 20);
@@ -67,7 +69,7 @@ var aWidthLE = new kiwi.Expression([-1, aWidth], 20);
 
 // 30 ≤ b.width
 var bWidthGE = new kiwi.Expression(bWidth, -30);
-// solver.addConstraint(new kiwi.Constraint(bWidthGE, kiwi.Operator.Eq, kiwi.Strength.required));
+solver.addConstraint(new kiwi.Constraint(bWidthGE, kiwi.Operator.Eq, kiwi.Strength.required));
 
 // b.width ≤ 30
 var bWidthLE = new kiwi.Expression([-1, bWidth], 30);
