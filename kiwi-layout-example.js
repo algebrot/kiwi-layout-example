@@ -76,7 +76,7 @@ var bWidthLE = new kiwi.Expression([-1, bWidth], 30);
 // solver.addConstraint(new kiwi.Constraint(bWidthLE, kiwi.Operator.Eq, kiwi.Strength.required));
 
 // Lets solve the problem!
-// solver.updateVariables();
+solver.updateVariables();
 
 // Logger 
 console.log("pLeft "+pLeft.toString());
