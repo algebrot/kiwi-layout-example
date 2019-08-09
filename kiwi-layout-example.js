@@ -32,7 +32,6 @@ solver.addEditVariable(bRight, kiwi.Strength.strong);
 solver.addEditVariable(bWidth, kiwi.Strength.strong);
 
 // Create a variable calculated through a constraint
-
 // TODO: figure out why commented out constraints are unsolveable 
 
 // 10 ≤ a.left - p.left 
