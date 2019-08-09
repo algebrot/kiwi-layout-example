@@ -43,7 +43,7 @@ var aLMinusPLLE = new kiwi.Expression([-1, aLeft], pLeft, 10);
 
 // 10 ≤ b.left - a.right
 var bLMinusARGE = new kiwi.Expression(bLeft, [-1, aRight], -10);
-solver.addConstraint(new kiwi.Constraint(bLMinusARGE, kiwi.Operator.Eq, kiwi.Strength.required));
+// solver.addConstraint(new kiwi.Constraint(bLMinusARGE, kiwi.Operator.Eq, kiwi.Strength.required));
 
 // b.left - a.right ≤ 10
 var bLMinusARLE = new kiwi.Expression(aRight, [-1, bLeft], 10);
@@ -90,14 +90,14 @@ console.log("bRight "+bRight.toString());
 console.log("bWidth "+bWidth.toString());
 
 console.log("10 ≤ a.left - p.left "+aLMinusPLGE.toString()); 
-// console.log("a.left - p.left ≤ 10 "+aLMinusPLLE.toString()); 
-// console.log("10 ≤ b.left - a.right "+bLMinusARGE.toString()); 
-// console.log("b.left - a.right ≤ 10 "+bLMinusARLE.toString());  
-// console.log("10 ≤ p.right - b.right "+pRMinusBRGE.toString());  
-// console.log("p.right - b.right ≤ 10 "+pRMinusBRLE.toString()); 
-// console.log("20 ≤ a.width "+aWidthGE.toString());  
-// console.log("a.width ≤ 20 "+aWidthLE.toString()); 
-// console.log("30 ≤ b.width "+bWidthGE.toString());  
-// console.log("b.width ≤ 30 "+bWidthLE.toString());  
+console.log("a.left - p.left ≤ 10 "+aLMinusPLLE.toString()); 
+console.log("10 ≤ b.left - a.right "+bLMinusARGE.toString()); 
+console.log("b.left - a.right ≤ 10 "+bLMinusARLE.toString());  
+console.log("10 ≤ p.right - b.right "+pRMinusBRGE.toString());  
+console.log("p.right - b.right ≤ 10 "+pRMinusBRLE.toString()); 
+console.log("20 ≤ a.width "+aWidthGE.toString());  
+console.log("a.width ≤ 20 "+aWidthLE.toString()); 
+console.log("30 ≤ b.width "+bWidthGE.toString());  
+console.log("b.width ≤ 30 "+bWidthLE.toString());  
 
 console.log(solver);
