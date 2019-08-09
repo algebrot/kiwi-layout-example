@@ -24,3 +24,14 @@ solver.suggestValue(width, 500);
 // Lets solve the problem!
 solver.updateVariables();
 assert(centerX.value(), 250);
+
+// Logger 
+console.log("left "+left.toString());
+
+console.log("width "+width.toString());
+
+console.log("centerX "+centerX.toString());
+
+console.log("expr "+expr.toString());
+
+console.log(solver);
