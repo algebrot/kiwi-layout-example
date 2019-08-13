@@ -31,50 +31,6 @@ solver.addEditVariable(bLeft, kiwi.Strength.strong);
 solver.addEditVariable(bRight, kiwi.Strength.strong);
 solver.addEditVariable(bWidth, kiwi.Strength.strong);
 
-// Create a variable calculated through a constraint
-// TODO: figure out why some variable values are not present 
-//       and whether all variables should be editable? 
-
-// 10 ≤ a.left - p.left 
-var aLMinusPLGE = new kiwi.Expression([-1, pLeft], aLeft, -10);
-solver.addConstraint(new kiwi.Constraint(aLMinusPLGE, kiwi.Operator.Ge, kiwi.Strength.required));
-
-// a.left - p.left ≤ 10
-var aLMinusPLLE = new kiwi.Expression([-1, aLeft], pLeft, 10);
-solver.addConstraint(new kiwi.Constraint(aLMinusPLLE, kiwi.Operator.Le, kiwi.Strength.required));
-
-// 10 ≤ b.left - a.right
-var bLMinusARGE = new kiwi.Expression(bLeft, [-1, aRight], -10);
-solver.addConstraint(new kiwi.Constraint(bLMinusARGE, kiwi.Operator.Ge, kiwi.Strength.required));
-
-// b.left - a.right ≤ 10
-var bLMinusARLE = new kiwi.Expression(aRight, [-1, bLeft], 10);
-solver.addConstraint(new kiwi.Constraint(bLMinusARLE, kiwi.Operator.Le, kiwi.Strength.required));
-
-// 10 ≤ p.right - b.right
-var pRMinusBRGE = new kiwi.Expression(pRight, [-1, bRight], -10);
-solver.addConstraint(new kiwi.Constraint(pRMinusBRGE, kiwi.Operator.Ge, kiwi.Strength.required));
-
-// p.right - b.right ≤ 10
-var pRMinusBRLE = new kiwi.Expression(bRight, [-1, pRight], 10);
-solver.addConstraint(new kiwi.Constraint(pRMinusBRLE, kiwi.Operator.Le, kiwi.Strength.required));
-
-// 20 ≤ a.width 
-var aWidthGE = new kiwi.Expression(aWidth, -20);
-solver.addConstraint(new kiwi.Constraint(aWidthGE, kiwi.Operator.Ge, kiwi.Strength.required));
-
-// a.width ≤ 20
-var aWidthLE = new kiwi.Expression([-1, aWidth], 20);
-solver.addConstraint(new kiwi.Constraint(aWidthLE, kiwi.Operator.Le, kiwi.Strength.required));
-
-// 30 ≤ b.width
-var bWidthGE = new kiwi.Expression(bWidth, -30);
-solver.addConstraint(new kiwi.Constraint(bWidthGE, kiwi.Operator.Ge, kiwi.Strength.required));
-
-// b.width ≤ 30
-var bWidthLE = new kiwi.Expression([-1, bWidth], 30);
-solver.addConstraint(new kiwi.Constraint(bWidthLE, kiwi.Operator.Le, kiwi.Strength.required));
-
 // Suggest some values to the solver
 solver.suggestValue(pLeft, 0);
 solver.suggestValue(pRight, 800);
@@ -91,7 +47,6 @@ solver.suggestValue(bWidth, 300);
 // Lets solve the problem!
 solver.updateVariables();
 
-// Logger 
 console.log(" "); 
 console.log("Variable Values"); 
 console.log(" "); 
@@ -107,6 +62,50 @@ console.log("bLeft "+bLeft.value().toString());
 console.log("bRight "+bRight.value().toString());
 console.log("bWidth "+bWidth.value().toString());
 
+// Create a variable calculated through a constraint
+
+// a.left - p.left ≥ 10 
+var aLMinusPLGE = new kiwi.Expression([-1, pLeft], aLeft, -10);
+solver.addConstraint(new kiwi.Constraint(aLMinusPLGE, kiwi.Operator.Ge, kiwi.Strength.required));
+
+// a.left - p.left ≤ 10
+var aLMinusPLLE = new kiwi.Expression([-1, aLeft], pLeft, 10);
+solver.addConstraint(new kiwi.Constraint(aLMinusPLLE, kiwi.Operator.Le, kiwi.Strength.required));
+
+// b.left - a.right ≥ 10 
+var bLMinusARGE = new kiwi.Expression(bLeft, [-1, aRight], -10);
+solver.addConstraint(new kiwi.Constraint(bLMinusARGE, kiwi.Operator.Ge, kiwi.Strength.required));
+
+// b.left - a.right ≤ 10
+var bLMinusARLE = new kiwi.Expression(aRight, [-1, bLeft], 10);
+solver.addConstraint(new kiwi.Constraint(bLMinusARLE, kiwi.Operator.Le, kiwi.Strength.required));
+
+// p.right - b.right ≥ 10 
+var pRMinusBRGE = new kiwi.Expression(pRight, [-1, bRight], -10);
+solver.addConstraint(new kiwi.Constraint(pRMinusBRGE, kiwi.Operator.Ge, kiwi.Strength.required));
+
+// p.right - b.right ≤ 10
+var pRMinusBRLE = new kiwi.Expression(bRight, [-1, pRight], 10);
+solver.addConstraint(new kiwi.Constraint(pRMinusBRLE, kiwi.Operator.Le, kiwi.Strength.required));
+
+// a.width ≥ 20 
+var aWidthGE = new kiwi.Expression(aWidth, -20);
+solver.addConstraint(new kiwi.Constraint(aWidthGE, kiwi.Operator.Ge, kiwi.Strength.required));
+
+// a.width ≤ 20
+var aWidthLE = new kiwi.Expression([-1, aWidth], 20);
+solver.addConstraint(new kiwi.Constraint(aWidthLE, kiwi.Operator.Le, kiwi.Strength.required));
+
+// b.width ≥ 30 
+var bWidthGE = new kiwi.Expression(bWidth, -30);
+solver.addConstraint(new kiwi.Constraint(bWidthGE, kiwi.Operator.Ge, kiwi.Strength.required));
+
+// b.width ≤ 30
+var bWidthLE = new kiwi.Expression([-1, bWidth], 30);
+solver.addConstraint(new kiwi.Constraint(bWidthLE, kiwi.Operator.Le, kiwi.Strength.required));
+
+
+// Logger
 console.log(" "); 
 console.log("Constraint Expressions"); 
 console.log(" "); 
