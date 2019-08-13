@@ -1,2 +1,2 @@
 # kiwi-layout-example
-TypeScript constraint implementation. 
+TypeScript constraint implementation for rectangle objects. 
