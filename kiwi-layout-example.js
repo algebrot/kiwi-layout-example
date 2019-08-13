@@ -33,6 +33,7 @@ solver.addEditVariable(bWidth, kiwi.Strength.strong);
 
 // Create a variable calculated through a constraint
 // TODO: figure out why some variable values are not present 
+//       and whether all variables should be editable? 
 
 // 10 ≤ a.left - p.left 
 var aLMinusPLGE = new kiwi.Expression([-1, pLeft], aLeft, -10);
